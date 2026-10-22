@@ -1,0 +1,30 @@
+[project]
+name = "unveil-the-mask-landmark"
+version = "0.1.0"
+description = "Landmark branch: diffusion masked pretraining and contrastive probing"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "blosc2>=3.7,<4",
+  "numpy>=2.0,<3",
+  "torch==2.5.1+cu121",
+  "tqdm>=4.67,<5",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.4,<9"]
+
+[tool.uv]
+package = false
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = [".venv", "data", "output"]
+pythonpath = ["."]
